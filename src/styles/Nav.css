@@ -1,0 +1,25 @@
+.Nav {
+  height: 50px;
+  width: 100vw;
+  background-color: #ee6c4d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  padding-right: 10px;
+  height: 25px;
+  fill: white;
+}
+
+.icon:hover {
+  fill: #17a398;
+}
