@@ -4,7 +4,7 @@ import "../styles/Nav.css";
 export default function Nav() {
   return (
     <div className="Nav">
-      CV Maker{" "}
+      <h1>CV Maker</h1>
       <span className="end">
         <a
           href="https://github.com/danmenjivar"
