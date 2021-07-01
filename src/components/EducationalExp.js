@@ -56,6 +56,7 @@ export default function EducationalExp(props) {
             id={child.id}
             key={child.key}
             deleteHandler={deleteHandler}
+            handleChange={props.handleChange}
           />
         );
       })}

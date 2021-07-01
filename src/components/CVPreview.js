@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import "../styles/CVPreview.css";
+import { Linkedin } from "@icons-pack/react-simple-icons";
 
 export default class CVPreview extends Component {
   render() {
-    const simpleIcons = require("simple-icons");
-    const linkedInIcon = simpleIcons.get("linkedin");
     const personalInfo = this.props.personal;
     const edInfo = this.props.edInfo;
     return (
@@ -21,8 +20,8 @@ export default class CVPreview extends Component {
           {personalInfo.email}
           {" \u2022 "}
           {personalInfo.phone}
-          {linkedInIcon.svg}
-          {" \u2022 "}@{personalInfo.linkedIn}
+          {" \u2022 "}
+          <Linkedin />@{personalInfo.linkedIn}
         </p>
         <h2>Education</h2>
         {edInfo.map((ed) => {
