@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import PersonalInfo from "./components/PersonalInfo";
 import EducationalExp from "./components/EducationalExp";
 import PracticalExp from "./components/PracticalExp";
+import TechExp from "./components/TechExp";
 import CVPreview from "./components/CVPreview";
 import "./styles/App.css";
 import { useReactToPrint } from "react-to-print";
@@ -49,6 +50,8 @@ function App() {
       resp: "RESPONSIBILITIES",
     },
   ]);
+
+  const [tech, setTech] = useState();
 
   // refs
   const previewRef = useRef(); // for calling react-to-print
@@ -118,6 +121,7 @@ function App() {
         />
         <button onClick={handleSave}>Save</button>
         <button onClick={handlePrint}>Download as PDF</button>
+        <TechExp />
       </div>
       <CVPreview
         ref={previewRef}
