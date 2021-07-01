@@ -23,6 +23,8 @@ function App() {
   });
   const [edInfo, setEdInfo] = useState([
     {
+      key: 0,
+      id: 1,
       schoolName: "SCHOOL_NAME",
       degreeOfStudy: "DEGREE",
       gradDate: "GRAD_DATE",
@@ -47,28 +49,33 @@ function App() {
   });
 
   const handleChange = (e) => {
-    console.log(e);
-    console.log(e.target.form.id, e.target.name, e.target.value);
-    handleChangeHelper(e.target.form.id, e.target.name, e.target.value);
-  };
+    const formId = e.target.form.id;
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+    // console.log(formId, fieldName, fieldValue);
 
-  const handleChangeHelper = (formId, fieldName, fieldValue) => {
-    switch (formId) {
-      case "personalInfo":
-        let copyOfState = Object.assign({}, personalInfo);
-        copyOfState[fieldName] = fieldValue;
-        setPersonalInfo(copyOfState);
-        break;
-      case "edInfo":
-        break;
-      default:
-        break;
+    if (formId === "personalInfo") {
+      handlePersonalInfoChange(fieldName, fieldValue);
+    } else if (formId.includes("edInfo")) {
+      const formNum = formId.split("#")[1];
+      handleEduInfoChange(formNum, fieldName, fieldValue);
     }
   };
 
-  const handleAdd = (e) => {
-    console.log("Clicked add", e);
+  const handlePersonalInfoChange = (fieldName, fieldValue) => {
+    let copyOfState = Object.assign({}, personalInfo);
+    copyOfState[fieldName] = fieldValue;
+    setPersonalInfo(copyOfState);
   };
+
+  const handleEduInfoChange = (formNumber, fieldName, fieldValue) => {
+    let copyOfState = [...edInfo];
+    const elemChange = copyOfState[formNumber - 1];
+    elemChange[fieldName] = fieldValue;
+    setEdInfo(copyOfState);
+  };
+
+  const handleExpInfoChange = () => {};
 
   // JSX render
   return (
@@ -76,8 +83,12 @@ function App() {
       <Nav />
       <div className="column">
         <PersonalInfo handleChange={handleChange} />
-        <EducationalExp handleChange={handleChange} onAdd={handleAdd} />
-        <PracticalExp onAdd={handleAdd} />
+        <EducationalExp
+          handleChange={handleChange}
+          edChildren={edInfo}
+          setEdChildren={setEdInfo}
+        />
+        <PracticalExp />
         <button onClick={handleSave}>Save</button>
         <button onClick={handlePrint}>Download as PDF</button>
       </div>

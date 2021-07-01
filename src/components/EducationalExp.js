@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import EdExpElement from "./EdExpElement";
 
 export default function EducationalExp(props) {
-  const [edChildren, setEdChildren] = useState([
-    {
-      key: 0,
-      id: 1,
-      schoolName: "SCHOOL_NAME",
-      degreeOfStudy: "DEGREE",
-      gradDate: "GRAD_DATE",
-      city: "CITY_NAME",
-      state: "ST",
-      relStudy: "REL_STUDY",
-    },
-  ]);
+  const edChildren = props.edChildren;
+  const setEdChildren = props.setEdChildren;
+  // const [edChildren, setEdChildren] = useState([
+  //   {
+  //     key: 0,
+  //     id: 1,
+  //     schoolName: "SCHOOL_NAME",
+  //     degreeOfStudy: "DEGREE",
+  //     gradDate: "GRAD_DATE",
+  //     city: "CITY_NAME",
+  //     state: "ST",
+  //     relStudy: "REL_STUDY",
+  //   },
+  // ]);
 
   const addHandler = (e) => {
     const edIndex = edChildren.length;

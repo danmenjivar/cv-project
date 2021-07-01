@@ -1,10 +1,11 @@
 import React from "react";
 
 export default function EdExpElement(props) {
+  const formId = "edInfo#" + props.id;
   return (
     <div>
       <h3>Educational Experience {props.id}</h3>
-      <form id="edInfo">
+      <form id={formId}>
         <label htmlFor="schoolName">
           <input
             type="text"
