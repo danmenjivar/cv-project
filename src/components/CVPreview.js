@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/CVPreview.css";
-import { Linkedin } from "@icons-pack/react-simple-icons";
+import { Linkedin, Github } from "@icons-pack/react-simple-icons";
 
 export default class CVPreview extends Component {
   render() {
@@ -23,6 +23,8 @@ export default class CVPreview extends Component {
           {personalInfo.phone}
           {" \u2022 "}
           <Linkedin />@{personalInfo.linkedIn}
+          {" \u2022 "}
+          <Github />@{personalInfo.github}
         </p>
         <h2>Education</h2>
         {edInfo.map((ed) => {
@@ -33,7 +35,7 @@ export default class CVPreview extends Component {
             </p>
           );
         })}
-        <h2>Experience</h2>
+        <h2>Employment</h2>
         {expInfo.map((exp) => {
           return (
             <p>
@@ -42,6 +44,7 @@ export default class CVPreview extends Component {
             </p>
           );
         })}
+        <h2>Technical Experience</h2>
       </div>
     );
   }

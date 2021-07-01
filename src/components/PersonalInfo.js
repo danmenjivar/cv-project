@@ -88,10 +88,20 @@ export default function PersonalInfo(props) {
         <label htmlFor="linkedIn">
           LinkedIn
           <input
-            type="url"
+            type="text"
             name="linkedIn"
             placeholder="LinkedIn"
             value={props.linkedIn}
+            onChange={props.handleChange}
+          />
+        </label>
+        <label htmlFor="github">
+          LinkedIn
+          <input
+            type="text"
+            name="github"
+            placeholder="GitHub"
+            value={props.github}
             onChange={props.handleChange}
           />
         </label>

@@ -1,10 +1,10 @@
 import React from "react";
-import uniqid from "uniqid";
 
 export default function PracticalExpElement(props) {
   const formId = "expInfo#" + props.id;
   return (
     <div>
+      <h3>Practical Experience {props.id}</h3>
       <form id={formId}>
         <label htmlFor="companyName">
           <input
@@ -71,7 +71,7 @@ export default function PracticalExpElement(props) {
           />
         </label>
       </form>
-      <button>Delete</button>
+      <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
     </div>
   );
 }

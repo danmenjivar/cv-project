@@ -20,6 +20,7 @@ function App() {
     email: "EMAIL@EMAIL.COM",
     phone: "(123) 456-678",
     linkedIn: "_USERNAME",
+    github: "_USERNAME",
   });
 
   const [edInfo, setEdInfo] = useState([
@@ -113,7 +114,7 @@ function App() {
         <PracticalExp
           handleChange={handleChange}
           expChildren={expInfo}
-          setEdChildren={setExpInfo}
+          setExpChildren={setExpInfo}
         />
         <button onClick={handleSave}>Save</button>
         <button onClick={handlePrint}>Download as PDF</button>
