@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import EdExpElement from "./EdExpElement";
 
 export default function EducationalExp(props) {
   const edChildren = props.edChildren;
   const setEdChildren = props.setEdChildren;
+  // Moved up to App.js
   // const [edChildren, setEdChildren] = useState([
   //   {
   //     key: 0,

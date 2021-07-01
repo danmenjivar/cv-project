@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import PracticalExpElement from "./PracticalExpElement";
 
-export default function PracticalExp() {
-  const [practChildren, setPractChildren] = useState([<PracticalExpElement />]);
+export default function PracticalExp(props) {
+  const expChildren = props.expChildren;
+  const setExpChildren = props.setExpChildren;
 
-  const addHelper = (e) => {
-    setPractChildren([...practChildren, <PracticalExpElement />]);
-  };
+  const addHandler = (e) => {};
 
   return (
     <div>
       <h3>Practical Experience</h3>
-      {practChildren.map((child) => child)}
-      <button onClick={addHelper}>Add</button>
+      {expChildren.map((child) => {
+        return (
+          <PracticalExpElement
+            id={child.id}
+            key={child.key}
+            // deleteHandler={deleteHandler}
+            handleChange={props.handleChange}
+          />
+        );
+      })}
+      <button onClick={addHandler}>Add</button>
     </div>
   );
 }

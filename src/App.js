@@ -21,6 +21,7 @@ function App() {
     phone: "(123) 456-678",
     linkedIn: "_USERNAME",
   });
+
   const [edInfo, setEdInfo] = useState([
     {
       key: 0,
@@ -33,7 +34,20 @@ function App() {
       relStudy: "REL_STUDY",
     },
   ]);
-  const [expInfo, setExpInfo] = useState([]);
+
+  const [expInfo, setExpInfo] = useState([
+    {
+      key: 0,
+      id: 1,
+      companyName: "COMPANY_NAME",
+      positionTitle: "POSITION",
+      startDate: "START_DATE",
+      endDate: "END_DATE",
+      city: "CITY_NAME",
+      state: "ST",
+      resp: "RESPONSIBILITIES",
+    },
+  ]);
 
   // refs
   const previewRef = useRef(); // for calling react-to-print
@@ -59,6 +73,9 @@ function App() {
     } else if (formId.includes("edInfo")) {
       const formNum = formId.split("#")[1];
       handleEduInfoChange(formNum, fieldName, fieldValue);
+    } else if (formId.includes("expInfo")) {
+      const formNum = formId.split("#")[1];
+      handleExpInfoChange(formNum, fieldName, fieldValue);
     }
   };
 
@@ -75,7 +92,12 @@ function App() {
     setEdInfo(copyOfState);
   };
 
-  const handleExpInfoChange = () => {};
+  const handleExpInfoChange = (formNumber, fieldName, fieldValue) => {
+    let copyOfState = [...expInfo];
+    const elemChange = copyOfState[formNumber - 1];
+    elemChange[fieldName] = fieldValue;
+    setExpInfo(copyOfState);
+  };
 
   // JSX render
   return (
@@ -88,7 +110,11 @@ function App() {
           edChildren={edInfo}
           setEdChildren={setEdInfo}
         />
-        <PracticalExp />
+        <PracticalExp
+          handleChange={handleChange}
+          expChildren={expInfo}
+          setEdChildren={setExpInfo}
+        />
         <button onClick={handleSave}>Save</button>
         <button onClick={handlePrint}>Download as PDF</button>
       </div>
@@ -97,6 +123,7 @@ function App() {
         className="column"
         personal={personalInfo}
         edInfo={edInfo}
+        expInfo={expInfo}
       />
     </div>
   );

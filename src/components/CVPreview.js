@@ -6,6 +6,7 @@ export default class CVPreview extends Component {
   render() {
     const personalInfo = this.props.personal;
     const edInfo = this.props.edInfo;
+    const expInfo = this.props.expInfo;
     return (
       <div className="CVPreview">
         <h3>
@@ -33,6 +34,14 @@ export default class CVPreview extends Component {
           );
         })}
         <h2>Experience</h2>
+        {expInfo.map((exp) => {
+          return (
+            <p>
+              {exp.companyName} {exp.positionTitle} {exp.startDate}{" "}
+              {exp.endDate} {exp.city} {exp.state} {exp.resp}
+            </p>
+          );
+        })}
       </div>
     );
   }

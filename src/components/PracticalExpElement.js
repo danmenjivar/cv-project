@@ -1,14 +1,17 @@
 import React from "react";
+import uniqid from "uniqid";
 
-export default function PracticalExpElement() {
+export default function PracticalExpElement(props) {
+  const formId = "expInfo#" + props.id;
   return (
     <div>
-      <form action="">
+      <form id={formId}>
         <label htmlFor="companyName">
           <input
             type="text"
             name="companyName"
-            id="companyName"
+            value={props.companyName}
+            onChange={props.handleChange}
             placeholder="Company Name"
           />
         </label>
@@ -16,28 +19,54 @@ export default function PracticalExpElement() {
           <input
             type="text"
             name="positionTitle"
-            id="positionTitle"
+            value={props.positionTitle}
+            onChange={props.handleChange}
             placeholder="Position Title"
           />
         </label>
-        <label htmlFor="dateFrom">
-          <input type="date" name="dateFrom" id="dateFrom" placeholder="From" />
+        <label htmlFor="startDate">
+          <input
+            type="date"
+            name="startDate"
+            value={props.startDate}
+            onChange={props.handleChange}
+            placeholder="From"
+          />
         </label>
-        <label htmlFor="dateUntil">
-          <input type="date" name="dateUntil" id="dateUntil" placeholder="To" />
+        <label htmlFor="endDate">
+          <input
+            type="date"
+            name="endDate"
+            value={props.endDate}
+            onChange={props.handleChange}
+            placeholder="To"
+          />
         </label>
         <label htmlFor="city">
-          <input type="text" name="city" id="city" placeholder="City" />
+          <input
+            type="text"
+            name="city"
+            value={props.city}
+            onChange={props.handleChange}
+            placeholder="City"
+          />
         </label>
         <label htmlFor="state">
-          <input type="text" name="state" id="state" placeholder="State" />
+          <input
+            type="text"
+            name="state"
+            value={props.state}
+            onChange={props.handleChange}
+            placeholder="State"
+          />
         </label>
         {/* TODO: add switch for remote work */}
-        <label htmlFor="responsibilities">
+        <label htmlFor="resp">
           <textarea
             type="text"
-            name="responsibilities"
-            id="responsibilities"
+            name="resp"
+            value={props.resp}
+            onChange={props.handleChange}
             placeholder="Main activities and responsibilities"
           />
         </label>
