@@ -21,10 +21,10 @@ export default function PracticalExpElement() {
           />
         </label>
         <label htmlFor="dateFrom">
-          <input type="text" name="dateFrom" id="dateFrom" placeholder="From" />
+          <input type="date" name="dateFrom" id="dateFrom" placeholder="From" />
         </label>
         <label htmlFor="dateUntil">
-          <input type="text" name="dateUntil" id="dateUntil" placeholder="To" />
+          <input type="date" name="dateUntil" id="dateUntil" placeholder="To" />
         </label>
         <label htmlFor="city">
           <input type="text" name="city" id="city" placeholder="City" />
@@ -42,7 +42,7 @@ export default function PracticalExpElement() {
           />
         </label>
       </form>
-      <button>Add</button>
+      <button>Delete</button>
     </div>
   );
 }
