@@ -51,7 +51,11 @@ function App() {
     },
   ]);
 
-  const [tech, setTech] = useState();
+  const [projs, setProjs] = useState([]);
+
+  const [langs, setLangs] = useState([]);
+
+  const [tools, setTools] = useState([]);
 
   // refs
   const previewRef = useRef(); // for calling react-to-print
@@ -67,19 +71,32 @@ function App() {
   });
 
   const handleChange = (e) => {
-    const formId = e.target.form.id;
+    const [formId, formNum] = e.target.form.id.split("#");
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
-    // console.log(formId, fieldName, fieldValue);
+    console.table({ formId, formNum, fieldName, fieldValue });
 
-    if (formId === "personalInfo") {
-      handlePersonalInfoChange(fieldName, fieldValue);
-    } else if (formId.includes("edInfo")) {
-      const formNum = formId.split("#")[1];
-      handleEduInfoChange(formNum, fieldName, fieldValue);
-    } else if (formId.includes("expInfo")) {
-      const formNum = formId.split("#")[1];
-      handleExpInfoChange(formNum, fieldName, fieldValue);
+    switch (formId) {
+      case "personalInfo":
+        handlePersonalInfoChange(fieldName, fieldValue);
+        break;
+      case "edInfo":
+        handleEduInfoChange(formNum, fieldName, fieldValue);
+        break;
+      case "expInfo":
+        handleExpInfoChange(formNum, fieldName, fieldValue);
+        break;
+      case "proj":
+        handleProjInfoChange(formNum, fieldName, fieldValue);
+        break;
+      case "lang":
+        handleLangInfoChange(formNum, fieldName, fieldValue);
+        break;
+      case "tool":
+        handleToolInfoChange(formNum, fieldName, fieldValue);
+        break;
+      default:
+        break;
     }
   };
 
@@ -103,6 +120,27 @@ function App() {
     setExpInfo(copyOfState);
   };
 
+  const handleProjInfoChange = (formNumber, fieldName, fieldValue) => {
+    let copyOfState = [...projs];
+    const elemChange = copyOfState[formNumber - 1];
+    elemChange[fieldName] = fieldValue;
+    setProjs(copyOfState);
+  };
+
+  const handleLangInfoChange = (formNumber, fieldName, fieldValue) => {
+    let copyOfState = [...langs];
+    const elemChange = copyOfState[formNumber - 1];
+    elemChange[fieldName] = fieldValue;
+    setLangs(copyOfState);
+  };
+
+  const handleToolInfoChange = (formNumber, fieldName, fieldValue) => {
+    let copyOfState = [...tools];
+    const elemChange = copyOfState[formNumber - 1];
+    elemChange[fieldName] = fieldValue;
+    setTools(copyOfState);
+  };
+
   // JSX render
   return (
     <div className="App">
@@ -121,7 +159,15 @@ function App() {
         />
         <button onClick={handleSave}>Save</button>
         <button onClick={handlePrint}>Download as PDF</button>
-        <TechExp />
+        <TechExp
+          handleChange={handleChange}
+          projs={projs}
+          setProjs={setProjs}
+          langs={langs}
+          setLangs={setLangs}
+          tools={tools}
+          setTools={setTools}
+        />
       </div>
       <CVPreview
         ref={previewRef}
@@ -129,6 +175,7 @@ function App() {
         personal={personalInfo}
         edInfo={edInfo}
         expInfo={expInfo}
+        techInfo={{ projs, langs, tools }}
       />
     </div>
   );

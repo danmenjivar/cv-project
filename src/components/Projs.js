@@ -1,27 +1,28 @@
 import React from "react";
 
-export default function Projs() {
+export default function Projs(props) {
+  const formId = "proj#" + props.id;
   return (
     <div>
-      <form id="proj">
+      <form id={formId}>
         <label htmlFor="title">
           Project Title
-          <input type="text" name="title" id="" />
+          <input type="text" name="title" onChange={props.handleChange} />
         </label>
         <label htmlFor="year">
           Year
-          <input type="text" name="year" id="" />
+          <input type="text" name="year" onChange={props.handleChange} />
         </label>
-        <label htmlFor="description">
+        <label htmlFor="desc">
           Description
-          <input type="text" name="description" id="" />
+          <input type="text" name="desc" onChange={props.handleChange} />
         </label>
-        <label htmlFor="Relevant Technologies/Tools">
+        <label htmlFor="etc">
           Relevant Tech/Tools:
-          <input type="text" name="Relevant Technologies/Tools" id="" />
+          <input type="text" name="etc" onChange={props.handleChange} />
         </label>
       </form>
-      <button>Delete</button>
+      <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
     </div>
   );
 }

@@ -1,15 +1,16 @@
 import React from "react";
 
-export default function Tools() {
+export default function Tools(props) {
+  const formId = "tool#" + props.id;
   return (
     <div>
-      <form id="tools">
-        <label htmlFor="toolName">
-          Technology
-          <input type="text" name="toolName" />
+      <form id={formId}>
+        <label htmlFor="name">
+          Technology {props.id}
+          <input type="text" name="name" onChange={props.handleChange} />
         </label>
       </form>
-      <button>Delete</button>
+      <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
     </div>
   );
 }

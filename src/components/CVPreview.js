@@ -7,6 +7,7 @@ export default class CVPreview extends Component {
     const personalInfo = this.props.personal;
     const edInfo = this.props.edInfo;
     const expInfo = this.props.expInfo;
+    const techInfo = this.props.techInfo;
     return (
       <div className="CVPreview">
         <h3>
@@ -45,6 +46,22 @@ export default class CVPreview extends Component {
           );
         })}
         <h2>Technical Experience</h2>
+        {techInfo.projs.map((proj) => {
+          return (
+            <p>
+              {proj.title}
+              {proj.year}
+              {proj.desc}
+              {proj.etc}
+            </p>
+          );
+        })}
+        {techInfo.langs.map((lang) => {
+          return <p>{lang.name}</p>;
+        })}
+        {techInfo.tools.map((tech) => {
+          return <p>{tech.name}</p>;
+        })}
       </div>
     );
   }
