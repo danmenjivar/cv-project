@@ -30,7 +30,7 @@ export default function EdInfo(props) {
 
   return (
     <div>
-      <h2>Educational Experience</h2>
+      <h1>Education</h1>
       {edChildren.map((child) => {
         return (
           <EdExp
