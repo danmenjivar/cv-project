@@ -12,7 +12,6 @@ export default function TechInfo(props) {
   const setTools = props.setTools;
 
   const addProjectHandler = (e) => {
-    const i = projs.length;
     const projId = uniqid();
     setProjs([
       ...projs,
@@ -28,7 +27,6 @@ export default function TechInfo(props) {
   };
 
   const addLanguageHandler = (e) => {
-    const i = langs.length;
     const langId = uniqid();
     setLangs([
       ...langs,
@@ -41,9 +39,7 @@ export default function TechInfo(props) {
   };
 
   const addToolHandler = (e) => {
-    const i = tools.length;
     const toolId = uniqid();
-    console.log(i);
     setTools([
       ...tools,
       {
@@ -52,15 +48,6 @@ export default function TechInfo(props) {
         name: "TECH_NAME",
       },
     ]);
-  };
-
-  const reIndex = (arr) => {
-    let i = 0;
-    arr.forEach((element) => {
-      element.key = i;
-      element.id = i + 1;
-      i++;
-    });
   };
 
   const deleteProjectHandler = (id) => {
