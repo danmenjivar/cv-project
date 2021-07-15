@@ -9,14 +9,28 @@ export default function Nav(props) {
     <div className="Nav">
       <h1>CV Maker</h1>
       <span className="end">
-        <button className="icon-button" onClick={props.downloadHandler}>
-          {/* Download Button */}
+        <label htmlFor="file-upload" className="icon-button">
+          <input
+            type="file"
+            name="file-ipload"
+            id="file-upload"
+            accept=".json"
+            onChange={(e) => props.handleJSONUpload(e.target.files[0])}
+          />
+          <CloudUploadIcon />
+        </label>
+        <button
+          className="icon-button"
+          onClick={props.downloadHandler}
+          title="Download CV"
+        >
           <GetAppIcon />
         </button>
-        <button className="icon-button">
-          <CloudUploadIcon />
-        </button>
-        <button className="icon-button" onClick={props.printHandler}>
+        <button
+          className="icon-button"
+          onClick={props.printHandler}
+          title="Print CV"
+        >
           <PrintIcon />
         </button>
         <a

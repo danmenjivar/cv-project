@@ -3,11 +3,11 @@ import Nav from "./components/Nav";
 import PersonalInfo from "./components/PersonalInfo";
 import EdInfo from "./components/EdInfo";
 import EmployInfo from "./components/EmployInfo";
-import TechExp from "./components/TechExp";
+import TechInfo from "./components/TechInfo";
 import CVPreview from "./components/CVPreview";
 import "./styles/App.css";
 import { useReactToPrint } from "react-to-print";
-import FileSaver, { saveAs } from "file-saver";
+import FileSaver from "file-saver";
 
 // Note: color palette https://coolors.co/ee6c4d-f38d68-662c91-17a398-33312e
 function App() {
@@ -102,30 +102,38 @@ function App() {
     setEmpInfo(copyOfState);
   };
 
-  const handleProjInfoChange = (formNumber, fieldName, fieldValue) => {
+  const handleProjInfoChange = (formId, fieldName, fieldValue) => {
     let copyOfState = [...projs];
-    const elemChange = copyOfState[formNumber - 1];
-    elemChange[fieldName] = fieldValue;
+    const indexOfElemChanged = copyOfState.findIndex(
+      (elem) => elem.id === formId
+    );
+    copyOfState[indexOfElemChanged][fieldName] = fieldValue;
     setProjs(copyOfState);
   };
 
-  const handleLangInfoChange = (formNumber, fieldName, fieldValue) => {
+  const handleLangInfoChange = (formId, fieldName, fieldValue) => {
     let copyOfState = [...langs];
-    const elemChange = copyOfState[formNumber - 1];
-    elemChange[fieldName] = fieldValue;
+    const indexOfElemChanged = copyOfState.findIndex(
+      (elem) => elem.id === formId
+    );
+    copyOfState[indexOfElemChanged][fieldName] = fieldValue;
     setLangs(copyOfState);
   };
 
-  const handleToolInfoChange = (formNumber, fieldName, fieldValue) => {
+  const handleToolInfoChange = (formId, fieldName, fieldValue) => {
     let copyOfState = [...tools];
-    const elemChange = copyOfState[formNumber - 1];
-    elemChange[fieldName] = fieldValue;
+    const indexOfElemChanged = copyOfState.findIndex(
+      (elem) => elem.id === formId
+    );
+    copyOfState[indexOfElemChanged][fieldName] = fieldValue;
     setTools(copyOfState);
   };
 
   const downloadJSONHandler = () => {
     const cvObj = {
+      cv_version: "0.1",
       personal: personalInfo,
+      ed: edInfo,
       emp: empInfo,
       projs: projs,
       langs: langs,
@@ -134,15 +142,43 @@ function App() {
     const cvData = new Blob([JSON.stringify(cvObj)], {
       type: "application/json;charset=utf-8",
     });
-    FileSaver.saveAs(cvData, "cv-data.json");
+    const saveFileAs = `cv-data-${new Date()}.json`;
+    FileSaver.saveAs(cvData, saveFileAs);
   };
 
-  const loadJSONHandler = () => {};
+  const loadJSONHandler = (file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      let fileData = e.target.result;
+      loadJSON(fileData);
+    };
+
+    reader.readAsText(file);
+  };
+
+  const loadJSON = (fileData) => {
+    let cvData = JSON.parse(fileData);
+    // sanity check if JSON uploaded is a CV
+    if (cvData.cv_version) {
+      setPersonalInfo(cvData.personal);
+      setEdInfo(cvData.ed);
+      setEmpInfo(cvData.emp);
+      setProjs(cvData.projs);
+      setTools(cvData.tools);
+      setLangs(cvData.langs);
+    } else {
+      console.error("Invalid File Type");
+    }
+  };
 
   // JSX render
   return (
     <div className="App">
-      <Nav downloadHandler={downloadJSONHandler} printHandler={handlePrint} />
+      <Nav
+        downloadHandler={downloadJSONHandler}
+        printHandler={handlePrint}
+        handleJSONUpload={loadJSONHandler}
+      />
       <div className="Form">
         <PersonalInfo handleChange={handleChange} />
         <EdInfo
@@ -155,7 +191,7 @@ function App() {
           empChildren={empInfo}
           setEmpChildren={setEmpInfo}
         />
-        <TechExp
+        <TechInfo
           handleChange={handleChange}
           projs={projs}
           setProjs={setProjs}
@@ -164,16 +200,18 @@ function App() {
           tools={tools}
           setTools={setTools}
         />
-        <input type="file" name="" id="" />
       </div>
-      <CVPreview
-        ref={previewRef}
-        className="column"
-        personal={personalInfo}
-        edInfo={edInfo}
-        expInfo={empInfo}
-        techInfo={{ projs, langs, tools }}
-      />
+      <div>
+        <h1>Preview</h1>
+        <CVPreview
+          ref={previewRef}
+          className="column"
+          personal={personalInfo}
+          edInfo={edInfo}
+          expInfo={empInfo}
+          techInfo={{ projs, langs, tools }}
+        />
+      </div>
     </div>
   );
 }
