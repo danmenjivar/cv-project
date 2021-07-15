@@ -145,7 +145,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <div className="column">
+      <div className="Form">
         <PersonalInfo handleChange={handleChange} />
         <EducationalExp
           handleChange={handleChange}
