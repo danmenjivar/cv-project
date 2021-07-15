@@ -1,8 +1,9 @@
 import Projs from "./Projs";
 import Langs from "./Langs";
 import Tools from "./Tools";
+import uniqid from "uniqid";
 
-export default function TechExp(props) {
+export default function TechInfo(props) {
   const projs = props.projs;
   const langs = props.langs;
   const tools = props.tools;
@@ -12,11 +13,12 @@ export default function TechExp(props) {
 
   const addProjectHandler = (e) => {
     const i = projs.length;
+    const projId = uniqid();
     setProjs([
       ...projs,
       {
-        key: i,
-        id: i + 1,
+        key: projId,
+        id: projId,
         title: "PROJ_TITLE",
         year: "YEAR_VAL",
         desc: "PROJ_DESC",
@@ -27,11 +29,12 @@ export default function TechExp(props) {
 
   const addLanguageHandler = (e) => {
     const i = langs.length;
+    const langId = uniqid();
     setLangs([
       ...langs,
       {
-        key: i,
-        id: i + 1,
+        key: langId,
+        id: langId,
         name: "LANG_NAME",
       },
     ]);
@@ -39,12 +42,13 @@ export default function TechExp(props) {
 
   const addToolHandler = (e) => {
     const i = tools.length;
+    const toolId = uniqid();
     console.log(i);
     setTools([
       ...tools,
       {
-        key: i,
-        id: i + 1,
+        key: toolId,
+        id: toolId,
         name: "TECH_NAME",
       },
     ]);
@@ -60,32 +64,23 @@ export default function TechExp(props) {
   };
 
   const deleteProjectHandler = (id) => {
-    const stateCopy = [...projs];
-    stateCopy.splice(id - 1, 1);
-    reIndex(stateCopy);
+    const stateCopy = projs.filter((child) => child.id !== id);
     setProjs(stateCopy);
   };
 
   const deleteLanguageHandler = (id) => {
-    console.log(`id to delete ${id}`);
-    const stateCopy = [...langs];
-    console.log("Before del:", stateCopy);
-    stateCopy.splice(id - 1, 1);
-    console.log("After del:", stateCopy);
-    reIndex(stateCopy);
+    const stateCopy = langs.filter((child) => child.id !== id);
     setLangs(stateCopy);
   };
 
   const deleteToolHandler = (id) => {
-    const stateCopy = [...tools];
-    stateCopy.splice(id - 1, 1);
-    reIndex(stateCopy);
+    const stateCopy = tools.filter((child) => child.id !== id);
     setTools(stateCopy);
   };
 
   return (
     <div>
-      <h2>Tech Exp</h2>
+      <h1>Technical Experience</h1>
       <button onClick={addProjectHandler}>+ Project</button>
       <button onClick={addLanguageHandler}>+ Language</button>
       <button onClick={addToolHandler}>+ Technology</button>

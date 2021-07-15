@@ -46,3 +46,7 @@ h1 {
 .end {
   display: flex;
 }
+
+input[type="file"] {
+  display: none;
+}

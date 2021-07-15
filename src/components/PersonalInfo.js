@@ -1,4 +1,5 @@
 import "../styles/Form.css";
+import "../styles/Headings.css";
 
 export default function PersonalInfo(props) {
   return (
