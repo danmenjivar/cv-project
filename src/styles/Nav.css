@@ -20,6 +20,7 @@ h1 {
 }
 
 .icon {
+  padding-left: 20px;
   padding-right: 20px;
   height: 25px;
   fill: white;
@@ -27,4 +28,21 @@ h1 {
 
 .icon:hover {
   fill: #17a398;
+}
+
+.icon-button {
+  margin-right: 10px;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  cursor: pointer;
+  color: white;
+}
+
+.icon-button:hover {
+  color: #17a398;
+}
+
+.end {
+  display: flex;
 }

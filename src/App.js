@@ -2,11 +2,12 @@ import React, { useState, useRef } from "react";
 import Nav from "./components/Nav";
 import PersonalInfo from "./components/PersonalInfo";
 import EdInfo from "./components/EdInfo";
-import PracticalExp from "./components/PracticalExp";
+import EmployInfo from "./components/EmployInfo";
 import TechExp from "./components/TechExp";
 import CVPreview from "./components/CVPreview";
 import "./styles/App.css";
 import { useReactToPrint } from "react-to-print";
+import FileSaver, { saveAs } from "file-saver";
 
 // Note: color palette https://coolors.co/ee6c4d-f38d68-662c91-17a398-33312e
 function App() {
@@ -26,19 +27,7 @@ function App() {
 
   const [edInfo, setEdInfo] = useState([]);
 
-  const [expInfo, setExpInfo] = useState([
-    {
-      key: 0,
-      id: 1,
-      companyName: "COMPANY_NAME",
-      positionTitle: "POSITION",
-      startDate: "START_DATE",
-      endDate: "END_DATE",
-      city: "CITY_NAME",
-      state: "ST",
-      resp: "RESPONSIBILITIES",
-    },
-  ]);
+  const [empInfo, setEmpInfo] = useState([]);
 
   const [projs, setProjs] = useState([]);
 
@@ -50,11 +39,6 @@ function App() {
   const previewRef = useRef(); // for calling react-to-print
 
   // handlers
-  const handleSave = () => {
-    // TODO: save to localStorage
-    console.log("Clicked on Save");
-  };
-
   const handlePrint = useReactToPrint({
     content: () => previewRef.current,
   });
@@ -77,8 +61,8 @@ function App() {
       case "edInfo":
         handleEduInfoChange(formId, fieldName, fieldValue);
         break;
-      case "expInfo":
-        handleExpInfoChange(formId, fieldName, fieldValue);
+      case "empInfo":
+        handleEmpInfoChange(formId, fieldName, fieldValue);
         break;
       case "proj":
         handleProjInfoChange(formId, fieldName, fieldValue);
@@ -109,11 +93,13 @@ function App() {
     setEdInfo(copyOfState);
   };
 
-  const handleExpInfoChange = (formNumber, fieldName, fieldValue) => {
-    let copyOfState = [...expInfo];
-    const elemChange = copyOfState[formNumber - 1];
-    elemChange[fieldName] = fieldValue;
-    setExpInfo(copyOfState);
+  const handleEmpInfoChange = (formId, fieldName, fieldValue) => {
+    let copyOfState = [...empInfo];
+    const indexOfElemChanged = copyOfState.findIndex(
+      (elem) => elem.id === formId
+    );
+    copyOfState[indexOfElemChanged][fieldName] = fieldValue;
+    setEmpInfo(copyOfState);
   };
 
   const handleProjInfoChange = (formNumber, fieldName, fieldValue) => {
@@ -137,10 +123,26 @@ function App() {
     setTools(copyOfState);
   };
 
+  const downloadJSONHandler = () => {
+    const cvObj = {
+      personal: personalInfo,
+      emp: empInfo,
+      projs: projs,
+      langs: langs,
+      tools: tools,
+    };
+    const cvData = new Blob([JSON.stringify(cvObj)], {
+      type: "application/json;charset=utf-8",
+    });
+    FileSaver.saveAs(cvData, "cv-data.json");
+  };
+
+  const loadJSONHandler = () => {};
+
   // JSX render
   return (
     <div className="App">
-      <Nav />
+      <Nav downloadHandler={downloadJSONHandler} printHandler={handlePrint} />
       <div className="Form">
         <PersonalInfo handleChange={handleChange} />
         <EdInfo
@@ -148,13 +150,11 @@ function App() {
           edChildren={edInfo}
           setEdChildren={setEdInfo}
         />
-        <PracticalExp
+        <EmployInfo
           handleChange={handleChange}
-          expChildren={expInfo}
-          setExpChildren={setExpInfo}
+          empChildren={empInfo}
+          setEmpChildren={setEmpInfo}
         />
-        <button onClick={handleSave}>Save</button>
-        <button onClick={handlePrint}>Download as PDF</button>
         <TechExp
           handleChange={handleChange}
           projs={projs}
@@ -164,13 +164,14 @@ function App() {
           tools={tools}
           setTools={setTools}
         />
+        <input type="file" name="" id="" />
       </div>
       <CVPreview
         ref={previewRef}
         className="column"
         personal={personalInfo}
         edInfo={edInfo}
-        expInfo={expInfo}
+        expInfo={empInfo}
         techInfo={{ projs, langs, tools }}
       />
     </div>

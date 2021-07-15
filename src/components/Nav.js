@@ -1,11 +1,24 @@
 import React from "react";
 import "../styles/Nav.css";
+import PrintIcon from "@material-ui/icons/Print";
+import GetAppIcon from "@material-ui/icons/GetApp";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
-export default function Nav() {
+export default function Nav(props) {
   return (
     <div className="Nav">
       <h1>CV Maker</h1>
       <span className="end">
+        <button className="icon-button" onClick={props.downloadHandler}>
+          {/* Download Button */}
+          <GetAppIcon />
+        </button>
+        <button className="icon-button">
+          <CloudUploadIcon />
+        </button>
+        <button className="icon-button" onClick={props.printHandler}>
+          <PrintIcon />
+        </button>
         <a
           href="https://github.com/danmenjivar"
           target="_blank"

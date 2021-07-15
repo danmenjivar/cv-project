@@ -8,6 +8,15 @@ export default class CVPreview extends Component {
     const edInfo = this.props.edInfo;
     const expInfo = this.props.expInfo;
     const techInfo = this.props.techInfo;
+
+    function isTechExp() {
+      return (
+        techInfo.projs.length > 0 ||
+        techInfo.langs.length > 0 ||
+        techInfo.tools.length > 0
+      );
+    }
+
     return (
       <div className="CVPreview">
         <h3>
@@ -28,7 +37,7 @@ export default class CVPreview extends Component {
           {" \u2022 "}
           {personalInfo.phone}
         </div>
-        <h2>Education</h2>
+        {edInfo.length > 0 && <h2>Education</h2>}
         {edInfo.map((ed) => {
           return (
             <div className="grid">
@@ -42,7 +51,7 @@ export default class CVPreview extends Component {
             </div>
           );
         })}
-        <h2>Employment</h2>
+        {expInfo.length > 0 && <h2>Employment</h2>}
         {expInfo.map((exp) => {
           return (
             <div className="grid">
@@ -58,8 +67,8 @@ export default class CVPreview extends Component {
             </div>
           );
         })}
-        <h2>Technical Experience</h2>
-        {techInfo.projs.length > 0 && <h3>Projects</h3>}
+        {isTechExp() && <h2>Technical Experience</h2>}
+        {techInfo.projs.length > 0 && <h3>Personal Projects</h3>}
         {techInfo.projs.map((proj) => {
           return (
             <div className="justify-left">
