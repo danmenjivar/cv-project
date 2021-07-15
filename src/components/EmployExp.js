@@ -1,67 +1,91 @@
 import React from "react";
+import "../styles/Form.css";
 
-export default function PracticalExpElement(props) {
-  const formId = "expInfo#" + props.id;
+export default function EmployExp(props) {
+  const formId = "empInfo#" + props.id;
   return (
     <div>
-      <h3>Practical Experience {props.id}</h3>
+      <h3>Practical Employment Experience</h3>
       <form id={formId}>
-        <label htmlFor="companyName">
+        <div className="form_group">
           <input
+            className="form_field"
             type="text"
             name="companyName"
             value={props.companyName}
             onChange={props.handleChange}
             placeholder="Company Name"
           />
-        </label>
-        <label htmlFor="positionTitle">
+          <label className="form_label" htmlFor="companyName">
+            Name of Company
+          </label>
+        </div>
+        <div className="form_group">
           <input
+            className="form_field"
             type="text"
             name="positionTitle"
             value={props.positionTitle}
             onChange={props.handleChange}
             placeholder="Position Title"
           />
-        </label>
-        <label htmlFor="startDate">
+          <label className="form_label" htmlFor="positionTitle">
+            Position Title
+          </label>
+        </div>
+        <div className="form_group">
           <input
+            className="form_field"
             type="date"
             name="startDate"
             value={props.startDate}
             onChange={props.handleChange}
             placeholder="From"
           />
-        </label>
-        <label htmlFor="endDate">
+          <label className="form_label" htmlFor="startDate">
+            Start Date
+          </label>
+        </div>
+        <div className="form_group">
           <input
+            className="form_field"
             type="date"
             name="endDate"
             value={props.endDate}
             onChange={props.handleChange}
             placeholder="To"
           />
-        </label>
-        <label htmlFor="city">
+          <label className="form_label" htmlFor="endDate">
+            End Date
+          </label>
+        </div>
+        <div className="form_group">
           <input
+            className="form_field"
             type="text"
             name="city"
             value={props.city}
             onChange={props.handleChange}
             placeholder="City"
           />
-        </label>
-        <label htmlFor="state">
+          <label className="form_label" htmlFor="city">
+            City
+          </label>
+        </div>
+        <div className="form_group">
           <input
+            className="form_field"
             type="text"
             name="state"
             value={props.state}
             onChange={props.handleChange}
             placeholder="State"
           />
-        </label>
-        {/* TODO: add switch for remote work */}
-        <label htmlFor="resp">
+          <label className="form_label" htmlFor="state">
+            State
+          </label>
+        </div>
+        <div className="form_group">
           <textarea
             type="text"
             name="resp"
@@ -69,7 +93,8 @@ export default function PracticalExpElement(props) {
             onChange={props.handleChange}
             placeholder="Main activities and responsibilities"
           />
-        </label>
+          <label className="form_label" htmlFor="resp"></label>
+        </div>
       </form>
       <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
     </div>
