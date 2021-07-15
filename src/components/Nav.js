@@ -7,7 +7,7 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 export default function Nav(props) {
   return (
     <div className="Nav">
-      <h1>CV Maker</h1>
+      <h1 style={{ color: "white" }}>CV Maker</h1>
       <span className="end">
         <label htmlFor="file-upload" className="icon-button">
           <input
