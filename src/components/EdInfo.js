@@ -1,30 +1,18 @@
 import React from "react";
-import EdExpElement from "./EdExpElement";
+import EdExp from "./EdExp";
+import uniqid from "uniqid";
 
-export default function EducationalExp(props) {
+export default function EdInfo(props) {
   const edChildren = props.edChildren;
   const setEdChildren = props.setEdChildren;
-  // Moved up to App.js
-  // const [edChildren, setEdChildren] = useState([
-  //   {
-  //     key: 0,
-  //     id: 1,
-  //     schoolName: "SCHOOL_NAME",
-  //     degreeOfStudy: "DEGREE",
-  //     gradDate: "GRAD_DATE",
-  //     city: "CITY_NAME",
-  //     state: "ST",
-  //     relStudy: "REL_STUDY",
-  //   },
-  // ]);
 
   const addHandler = (e) => {
-    const edIndex = edChildren.length;
+    const edId = uniqid();
     setEdChildren([
       ...edChildren,
       {
-        key: edIndex,
-        id: edIndex + 1,
+        key: edId,
+        id: edId,
         schoolName: "SCHOOL_NAME",
         degreeOfStudy: "DEGREE",
         gradDate: "GRAD_DATE",
@@ -36,26 +24,16 @@ export default function EducationalExp(props) {
   };
 
   const deleteHandler = (id) => {
-    const edCopy = [...edChildren];
-    edCopy.splice(id - 1, 1);
-    reIndex(edCopy);
+    const edCopy = edChildren.filter((child) => child.id !== id);
     setEdChildren(edCopy);
-  };
-
-  const reIndex = (arr) => {
-    let i = 0;
-    arr.forEach((element) => {
-      element.key = i;
-      element.id = i + 1;
-      i++;
-    });
   };
 
   return (
     <div>
+      <h2>Educational Experience</h2>
       {edChildren.map((child) => {
         return (
-          <EdExpElement
+          <EdExp
             id={child.id}
             key={child.key}
             deleteHandler={deleteHandler}

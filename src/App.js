@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Nav from "./components/Nav";
 import PersonalInfo from "./components/PersonalInfo";
-import EducationalExp from "./components/EducationalExp";
+import EdInfo from "./components/EdInfo";
 import PracticalExp from "./components/PracticalExp";
 import TechExp from "./components/TechExp";
 import CVPreview from "./components/CVPreview";
@@ -24,18 +24,7 @@ function App() {
     github: "_USERNAME",
   });
 
-  const [edInfo, setEdInfo] = useState([
-    {
-      key: 0,
-      id: 1,
-      schoolName: "SCHOOL_NAME",
-      degreeOfStudy: "DEGREE",
-      gradDate: "GRAD_DATE",
-      city: "CITY_NAME",
-      state: "ST",
-      relStudy: "REL_STUDY",
-    },
-  ]);
+  const [edInfo, setEdInfo] = useState([]);
 
   const [expInfo, setExpInfo] = useState([
     {
@@ -71,29 +60,34 @@ function App() {
   });
 
   const handleChange = (e) => {
-    const [formId, formNum] = e.target.form.id.split("#");
+    const [formName, formId] = e.target.form.id.split("#");
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
-    console.table({ formId, formNum, fieldName, fieldValue });
+    console.table({
+      formName,
+      formId,
+      fieldName,
+      fieldValue,
+    });
 
-    switch (formId) {
+    switch (formName) {
       case "personalInfo":
         handlePersonalInfoChange(fieldName, fieldValue);
         break;
       case "edInfo":
-        handleEduInfoChange(formNum, fieldName, fieldValue);
+        handleEduInfoChange(formId, fieldName, fieldValue);
         break;
       case "expInfo":
-        handleExpInfoChange(formNum, fieldName, fieldValue);
+        handleExpInfoChange(formId, fieldName, fieldValue);
         break;
       case "proj":
-        handleProjInfoChange(formNum, fieldName, fieldValue);
+        handleProjInfoChange(formId, fieldName, fieldValue);
         break;
       case "lang":
-        handleLangInfoChange(formNum, fieldName, fieldValue);
+        handleLangInfoChange(formId, fieldName, fieldValue);
         break;
       case "tool":
-        handleToolInfoChange(formNum, fieldName, fieldValue);
+        handleToolInfoChange(formId, fieldName, fieldValue);
         break;
       default:
         break;
@@ -106,10 +100,12 @@ function App() {
     setPersonalInfo(copyOfState);
   };
 
-  const handleEduInfoChange = (formNumber, fieldName, fieldValue) => {
+  const handleEduInfoChange = (formId, fieldName, fieldValue) => {
     let copyOfState = [...edInfo];
-    const elemChange = copyOfState[formNumber - 1];
-    elemChange[fieldName] = fieldValue;
+    const indexOfElemChanged = copyOfState.findIndex(
+      (elem) => elem.id === formId
+    );
+    copyOfState[indexOfElemChanged][fieldName] = fieldValue;
     setEdInfo(copyOfState);
   };
 
@@ -147,7 +143,7 @@ function App() {
       <Nav />
       <div className="Form">
         <PersonalInfo handleChange={handleChange} />
-        <EducationalExp
+        <EdInfo
           handleChange={handleChange}
           edChildren={edInfo}
           setEdChildren={setEdInfo}
