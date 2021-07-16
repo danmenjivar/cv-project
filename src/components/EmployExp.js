@@ -1,11 +1,20 @@
 import React from "react";
 import "../styles/Form.css";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function EmployExp(props) {
   const formId = "empInfo#" + props.id;
   return (
     <div>
-      <h3>Practical Employment Experience</h3>
+      <div className="btn-container-header">
+        <h3>Practical Employment Experience</h3>
+        <button
+          className="del-btn"
+          onClick={() => props.deleteHandler(props.id)}
+        >
+          <DeleteIcon />
+        </button>
+      </div>
       <form id={formId}>
         <div className="form_group">
           <input
@@ -96,7 +105,6 @@ export default function EmployExp(props) {
           <label className="form_label" htmlFor="resp"></label>
         </div>
       </form>
-      <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
     </div>
   );
 }

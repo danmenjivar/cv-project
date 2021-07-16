@@ -1,6 +1,8 @@
 import React from "react";
 import EdExp from "./EdExp";
 import uniqid from "uniqid";
+import "../styles/Button.css";
+import AddIcon from "@material-ui/icons/Add";
 
 export default function EdInfo(props) {
   const edChildren = props.edChildren;
@@ -41,7 +43,11 @@ export default function EdInfo(props) {
           />
         );
       })}
-      <button onClick={addHandler}>Add</button>
+      <div className="btn-container">
+        <button className="add-btn" onClick={addHandler}>
+          <AddIcon /> Educational Experience
+        </button>
+      </div>
     </div>
   );
 }

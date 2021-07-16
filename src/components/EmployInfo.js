@@ -1,6 +1,8 @@
 import React from "react";
 import EmployExp from "./EmployExp";
 import uniqid from "uniqid";
+import "../styles/Button.css";
+import AddIcon from "@material-ui/icons/Add";
 
 export default function EmployInfo(props) {
   const empChildren = props.empChildren;
@@ -42,7 +44,11 @@ export default function EmployInfo(props) {
           />
         );
       })}
-      <button onClick={addHandler}>Add</button>
+      <div className="btn-container">
+        <button onClick={addHandler} className="add-btn">
+          <AddIcon /> Employment Experience
+        </button>
+      </div>
     </div>
   );
 }

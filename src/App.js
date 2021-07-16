@@ -166,6 +166,7 @@ function App() {
       setProjs(cvData.projs);
       setTools(cvData.tools);
       setLangs(cvData.langs);
+      console.log(personalInfo);
     } else {
       console.error("Invalid File Type");
     }

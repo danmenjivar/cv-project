@@ -1,10 +1,11 @@
 import React from "react";
 import "../styles/Form.css";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function Langs(props) {
   const formId = "lang#" + props.id;
   return (
-    <div>
+    <div className="btn-container-header">
       <form id={formId}>
         <div className="form_group">
           <input
@@ -19,7 +20,9 @@ export default function Langs(props) {
           </label>
         </div>
       </form>
-      <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
+      <button className="del-btn" onClick={() => props.deleteHandler(props.id)}>
+        <DeleteIcon />
+      </button>
     </div>
   );
 }

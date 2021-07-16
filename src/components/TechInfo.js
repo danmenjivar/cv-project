@@ -2,6 +2,8 @@ import Projs from "./Projs";
 import Langs from "./Langs";
 import Tools from "./Tools";
 import uniqid from "uniqid";
+import "../styles/Button.css";
+import AddIcon from "@material-ui/icons/Add";
 
 export default function TechInfo(props) {
   const projs = props.projs;
@@ -68,9 +70,17 @@ export default function TechInfo(props) {
   return (
     <div>
       <h1>Technical Experience</h1>
-      <button onClick={addProjectHandler}>+ Project</button>
-      <button onClick={addLanguageHandler}>+ Language</button>
-      <button onClick={addToolHandler}>+ Technology</button>
+      <div className="tri-btn-container">
+        <button className="add-btn" onClick={addProjectHandler}>
+          <AddIcon /> Project
+        </button>
+        <button className="add-btn" onClick={addLanguageHandler}>
+          <AddIcon /> Language
+        </button>
+        <button className="add-btn" onClick={addToolHandler}>
+          <AddIcon /> Technology
+        </button>
+      </div>
       {props.projs.map((proj) => {
         return (
           <Projs

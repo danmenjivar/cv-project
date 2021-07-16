@@ -1,11 +1,23 @@
 import React from "react";
 import "../styles/Form.css";
+import "../styles/Button.css";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function EdExp(props) {
   const formId = "edInfo#" + props.id;
   return (
     <div>
-      <h3>Educational Experience</h3>
+      <div className="btn-container-header">
+        <h3>Educational Experience</h3>
+        {props.deleteHandler && (
+          <button
+            className="del-btn"
+            onClick={() => props.deleteHandler(props.id)}
+          >
+            <DeleteIcon />
+          </button>
+        )}
+      </div>
       <form id={formId}>
         <div className="form_group">
           <input
@@ -82,9 +94,6 @@ export default function EdExp(props) {
           />
         </div>
       </form>
-      {props.deleteHandler && (
-        <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
-      )}
     </div>
   );
 }

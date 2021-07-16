@@ -1,0 +1,67 @@
+:root {
+  --primary-color: #11998e;
+  --secondary-color: #25df6c;
+}
+
+/* .Button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2rem;
+  height: 40px;
+  border: none;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+  line-height: 40px;
+}
+
+.Button:hover {
+  background-color: var(--primary-color);
+}
+.Button svg {
+  height: 1em;
+  width: 1em;
+} */
+.btn-container {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.add-btn {
+  display: inline-flex;
+  align-self: center;
+  color: white;
+  line-height: 25px;
+  background-color: var(--secondary-color);
+  border: none;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.add-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.del-btn {
+  background: none !important;
+  border: none;
+  color: var(--secondary-color);
+}
+
+.del-btn:hover {
+  color: var(--primary-color);
+}
+
+.btn-container-header {
+  display: flex;
+  justify-content: baseline;
+}
+
+.tri-btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}

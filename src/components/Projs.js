@@ -1,10 +1,20 @@
 import React from "react";
 import "../styles/Form.css";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function Projs(props) {
   const formId = "proj#" + props.id;
   return (
     <div>
+      <div className="btn-container-header">
+        <h3>Personal Project</h3>
+        <button
+          className="del-btn"
+          onClick={() => props.deleteHandler(props.id)}
+        >
+          <DeleteIcon />
+        </button>
+      </div>
       <form id={formId}>
         <div className="form_group">
           <input
@@ -55,7 +65,6 @@ export default function Projs(props) {
           </label>
         </div>
       </form>
-      <button onClick={() => props.deleteHandler(props.id)}>Delete</button>
     </div>
   );
 }
