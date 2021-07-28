@@ -90,6 +90,7 @@ export default function EdExp(props) {
             name="relStudy"
             value={props.relStudy}
             onChange={props.handleChange}
+            spellcheck="true"
             placeholder="Relevant coursework/thesis/honors/awards (optional)"
           />
         </div>

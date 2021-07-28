@@ -100,6 +100,7 @@ export default function EmployExp(props) {
             name="resp"
             value={props.resp}
             onChange={props.handleChange}
+            spellcheck="true"
             placeholder="Main activities and responsibilities"
           />
           <label className="form_label" htmlFor="resp"></label>
