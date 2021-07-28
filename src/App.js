@@ -13,16 +13,16 @@ import FileSaver from "file-saver";
 function App() {
   // states
   const [personalInfo, setPersonalInfo] = useState({
-    firstName: "FIRST_NAME",
-    lastName: "LAST_NAME",
-    streetAddress: "STREET_ADDRESS",
-    city: "CITY",
-    state: "ST",
-    zipCode: "ZIPC0D3",
-    email: "EMAIL@EMAIL.COM",
-    phone: "(123) 456-678",
-    linkedIn: "_USERNAME",
-    github: "_USERNAME",
+    firstName: "",
+    lastName: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    email: "",
+    phone: "",
+    linkedIn: "",
+    github: "",
   });
 
   const [edInfo, setEdInfo] = useState([]);

@@ -12,7 +12,7 @@ export default class CVPreview extends Component {
     function dateFormatter(htmlDate) {
       const datePattern = /\d{4}-\d{2}-\d{2}/;
       if (!datePattern.test(htmlDate)) {
-        return;
+        return "MXY, XX, XYYZ";
       }
 
       let [year, month, day] = htmlDate.split("-");
@@ -66,34 +66,59 @@ export default class CVPreview extends Component {
     return (
       <div className="CVPreview">
         <h1 style={{ color: "black" }}>
-          {personalInfo.firstName} {personalInfo.lastName}
+          {personalInfo.firstName.length > 0
+            ? personalInfo.firstName
+            : "FIRST_NAME"}{" "}
+          {personalInfo.lastName.length > 0
+            ? personalInfo.lastName
+            : "LAST_NAME"}
         </h1>
         <div className="socials">
-          <Linkedin />@{personalInfo.linkedIn}
+          <Linkedin />@
+          {personalInfo.linkedIn.length > 0
+            ? personalInfo.linkedIn
+            : "_USERNAME"}
           {" \u2022 "}
-          <Github />@{personalInfo.github}
+          <Github />@
+          {personalInfo.github.length > 0 ? personalInfo.github : "_USERNAME"}
         </div>
         <hr></hr>
         <div className="personal">
-          {personalInfo.streetAddress}
+          {personalInfo.streetAddress.length > 0
+            ? personalInfo.streetAddress
+            : "STREET_ADDRESS"}
           {" \u2022 "}
-          {personalInfo.city},{personalInfo.state} {personalInfo.zipCode}
+          {personalInfo.city.length > 0 ? personalInfo.city : "CITY"}
+          {", "}
+          {personalInfo.state.length > 0 ? personalInfo.state : "ST"}{" "}
+          {personalInfo.zipCode.length > 0 ? personalInfo.zipCode : "XXXXX"}
           {" \u2022 "}
-          {personalInfo.email}
+          {personalInfo.email.length > 0
+            ? personalInfo.email
+            : "EMAIL@HOST.COM"}
           {" \u2022 "}
-          {personalInfo.phone}
+          {personalInfo.phone.length > 0
+            ? personalInfo.phone
+            : "(XYZ) XXX-XYYZ"}
         </div>
         {edInfo.length > 0 && <h2>Education</h2>}
         {edInfo.map((ed) => {
           return (
             <div className="grid">
-              <div className="row1-col1">{ed.schoolName}</div>
-              <div className="row1-col2">
-                {ed.city}, {ed.state}
+              <div className="row1-col1">
+                {ed.schoolName.length > 0 ? ed.schoolName : "SCHOOL_NAME"}
               </div>
-              <div className="row2-col1">{ed.degreeOfStudy}</div>
+              <div className="row1-col2">
+                {ed.city.length > 0 ? ed.city : "CITY"},{" "}
+                {ed.state.length > 0 ? ed.state : "ST"}
+              </div>
+              <div className="row2-col1">
+                {ed.degreeOfStudy.length > 0 ? ed.degreeOfStudy : "DEGREE_NAME"}
+              </div>
               <div className="row2-col2">{dateFormatter(ed.gradDate)}</div>
-              <div className="row3">{ed.relStudy}</div>
+              <div className="row3">
+                {ed.relStudy.length > 0 ? ed.relStudy : "REL_STUDY"}
+              </div>
             </div>
           );
         })}
@@ -101,15 +126,24 @@ export default class CVPreview extends Component {
         {expInfo.map((exp) => {
           return (
             <div className="grid">
-              <div className="row1-col1">{exp.companyName}</div>
-              <div className="row1-col2">
-                {exp.city}, {exp.state}
+              <div className="row1-col1">
+                {exp.companyName.length > 0 ? exp.companyName : "COMPANY_NAME"}
               </div>
-              <div className="row2-col1">{exp.positionTitle}</div>
+              <div className="row1-col2">
+                {exp.city.length > 0 ? exp.city : "CITY"},{" "}
+                {exp.state.length > 0 ? exp.state : "ST"}
+              </div>
+              <div className="row2-col1">
+                {exp.positionTitle.length > 0
+                  ? exp.positionTitle
+                  : "POSITION_TITLE"}
+              </div>
               <div className="row2-col2">
                 {dateFormatter(exp.startDate)}-{dateFormatter(exp.endDate)}
               </div>
-              <div className="row3">{exp.resp}</div>
+              <div className="row3">
+                {exp.resp.length > 0 ? exp.resp : "RESPONSIBILITIES"}
+              </div>
             </div>
           );
         })}
@@ -119,8 +153,12 @@ export default class CVPreview extends Component {
           return (
             <div className="justify-left">
               {" \u2022 "}
-              <span className="elemTitle">{proj.title}</span> ({proj.year}).{" "}
-              {proj.desc}. {proj.etc}.
+              <span className="elemTitle">
+                {proj.title.length > 0 ? proj.title : "PROJ_TITLE"}
+              </span>{" "}
+              ({proj.year.length > 0 ? proj.year : "XYYZ"}).{" "}
+              {proj.desc.length > 0 ? proj.desc : "PROJ_DESC"}.{" "}
+              {proj.etc.length > 0 ? proj.etc : "LANG/TOOLS"}.
             </div>
           );
         })}
@@ -131,7 +169,7 @@ export default class CVPreview extends Component {
           {techInfo.langs.map((lang, i) => {
             return (
               <span>
-                {lang.name}
+                {lang.name.length > 0 ? lang.name : "LANG_NAME"}
                 {techInfo.langs.length === i + 1 ? "." : ", "}
               </span>
             );
@@ -144,7 +182,7 @@ export default class CVPreview extends Component {
           {techInfo.tools.map((tech, i) => {
             return (
               <span>
-                {tech.name}
+                {tech.name.length > 0 ? tech.name : "TECH_NAME"}
                 {techInfo.tools.length === i + 1 ? "." : ", "}
               </span>
             );

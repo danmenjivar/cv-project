@@ -20,10 +20,10 @@ export default function TechInfo(props) {
       {
         key: projId,
         id: projId,
-        title: "PROJ_TITLE",
-        year: "YEAR_VAL",
-        desc: "PROJ_DESC",
-        etc: "LANG/TOOLS",
+        title: "",
+        year: "",
+        desc: "",
+        etc: "",
       },
     ]);
   };
@@ -35,7 +35,7 @@ export default function TechInfo(props) {
       {
         key: langId,
         id: langId,
-        name: "LANG_NAME",
+        name: "",
       },
     ]);
   };
@@ -47,7 +47,7 @@ export default function TechInfo(props) {
       {
         key: toolId,
         id: toolId,
-        name: "TECH_NAME",
+        name: "",
       },
     ]);
   };

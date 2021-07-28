@@ -15,12 +15,12 @@ export default function EdInfo(props) {
       {
         key: edId,
         id: edId,
-        schoolName: "SCHOOL_NAME",
-        degreeOfStudy: "DEGREE",
-        gradDate: "GRAD_DATE",
-        city: "CITY_NAME",
-        state: "ST",
-        relStudy: "REL_STUDY",
+        schoolName: "",
+        degreeOfStudy: "",
+        gradDate: "",
+        city: "",
+        state: "",
+        relStudy: "",
       },
     ]);
   };

@@ -15,13 +15,13 @@ export default function EmployInfo(props) {
       {
         key: empId,
         id: empId,
-        companyName: "COMPANY_NAME",
-        positionTitle: "POSITION",
-        startDate: "START_DATE",
-        endDate: "END_DATE",
-        city: "CITY_NAME",
-        state: "ST",
-        resp: "RESPONSIBILITIES",
+        companyName: "",
+        positionTitle: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        state: "",
+        resp: "",
       },
     ]);
   };
