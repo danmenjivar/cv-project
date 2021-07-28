@@ -88,6 +88,7 @@ export default function TechInfo(props) {
             id={proj.id}
             key={proj.key}
             deleteHandler={deleteProjectHandler}
+            projInfo={proj}
           />
         );
       })}
@@ -98,6 +99,7 @@ export default function TechInfo(props) {
             id={lang.id}
             key={lang.key}
             deleteHandler={deleteLanguageHandler}
+            langName={lang.name}
           />
         );
       })}
@@ -108,6 +110,7 @@ export default function TechInfo(props) {
             id={tool.id}
             key={tool.key}
             deleteHandler={deleteToolHandler}
+            toolName={tool.name}
           />
         );
       })}

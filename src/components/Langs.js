@@ -14,6 +14,7 @@ export default function Langs(props) {
             name="name"
             onChange={props.handleChange}
             placeholder="PLACEHOLDER"
+            value={props.langName}
           />
           <label className="form_label" htmlFor="name">
             Language Name

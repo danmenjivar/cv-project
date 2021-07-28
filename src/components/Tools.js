@@ -14,6 +14,7 @@ export default function Tools(props) {
             name="name"
             onChange={props.handleChange}
             placeholder="PLACEHOLDER"
+            value={props.toolName}
           />
           <label className="form_label" htmlFor="name">
             Technology Name

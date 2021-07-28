@@ -4,6 +4,7 @@ import "../styles/Button.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function EdExp(props) {
+  const edInfo = props.edInfo;
   const formId = "edInfo#" + props.id;
   return (
     <div>
@@ -24,7 +25,7 @@ export default function EdExp(props) {
             className="form_field"
             type="text"
             name="schoolName"
-            value={props.schoolName}
+            value={edInfo.schoolName}
             onChange={props.handleChange}
             placeholder="School Name"
           />
@@ -37,7 +38,7 @@ export default function EdExp(props) {
             className="form_field"
             type="text"
             name="degreeOfStudy"
-            value={props.degreeOfStudy}
+            value={edInfo.degreeOfStudy}
             onChange={props.handleChange}
             placeholder="Degree"
           />
@@ -50,7 +51,7 @@ export default function EdExp(props) {
             className="form_field"
             type="date"
             name="gradDate"
-            value={props.gradDate}
+            value={edInfo.gradDate}
             onChange={props.handleChange}
             placeholder="Graduation Date"
           />
@@ -63,7 +64,7 @@ export default function EdExp(props) {
             className="form_field"
             type="text"
             name="city"
-            value={props.city}
+            value={edInfo.city}
             onChange={props.handleChange}
             placeholder="City"
           />
@@ -76,7 +77,7 @@ export default function EdExp(props) {
             className="form_field"
             type="text"
             name="state"
-            value={props.state}
+            value={edInfo.state}
             onChange={props.handleChange}
             placeholder="State"
           />
@@ -88,9 +89,9 @@ export default function EdExp(props) {
           <textarea
             type="text"
             name="relStudy"
-            value={props.relStudy}
+            value={edInfo.relStudy}
             onChange={props.handleChange}
-            spellcheck="true"
+            spellCheck="true"
             placeholder="Relevant coursework/thesis/honors/awards (optional)"
           />
         </div>

@@ -181,7 +181,7 @@ function App() {
         handleJSONUpload={loadJSONHandler}
       />
       <div className="Form">
-        <PersonalInfo handleChange={handleChange} />
+        <PersonalInfo handleChange={handleChange} personalInfo={personalInfo} />
         <EdInfo
           handleChange={handleChange}
           edChildren={edInfo}

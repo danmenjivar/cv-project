@@ -23,6 +23,7 @@ export default function Projs(props) {
             name="title"
             onChange={props.handleChange}
             placeholder="Project Title"
+            value={props.projInfo.title}
           />
           <label className="form_label" htmlFor="title">
             Project Title
@@ -35,6 +36,7 @@ export default function Projs(props) {
             name="year"
             onChange={props.handleChange}
             placeholder="Year"
+            value={props.projInfo.year}
           />
           <label className="form_label" htmlFor="year">
             Year
@@ -47,6 +49,7 @@ export default function Projs(props) {
             name="desc"
             onChange={props.handleChange}
             placeholder="Brief Description"
+            value={props.projInfo.desc}
           />
           <label className="form_label" htmlFor="desc">
             Brief Description
@@ -59,6 +62,7 @@ export default function Projs(props) {
             name="etc"
             onChange={props.handleChange}
             placeholder="Relevant Tech/Tools:"
+            value={props.projInfo.etc}
           />
           <label className="form_label" htmlFor="etc">
             Relevant Tech/Tools:

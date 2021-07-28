@@ -41,6 +41,7 @@ export default function EmployInfo(props) {
             key={child.key}
             deleteHandler={deleteHandler}
             handleChange={props.handleChange}
+            empInfo={child}
           />
         );
       })}

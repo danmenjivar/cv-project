@@ -40,6 +40,7 @@ export default function EdInfo(props) {
             key={child.key}
             deleteHandler={deleteHandler}
             handleChange={props.handleChange}
+            edInfo={child}
           />
         );
       })}

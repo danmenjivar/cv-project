@@ -2,6 +2,7 @@ import "../styles/Form.css";
 import "../styles/Headings.css";
 
 export default function PersonalInfo(props) {
+  const personalInfo = props.personalInfo;
   return (
     <div className="Background">
       <h1>Personal Info</h1>
@@ -12,7 +13,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="firstName"
             placeholder="First Name"
-            value={props.firstName}
+            value={personalInfo.firstName}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="firstName">
@@ -25,7 +26,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="lastName"
             placeholder="Last Name"
-            value={props.lastName}
+            value={personalInfo.lastName}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="lastName">
@@ -38,7 +39,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="streetAddress"
             placeholder="123 A St."
-            value={props.streetAddress}
+            value={personalInfo.streetAddress}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="streetAddress">
@@ -51,7 +52,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="city"
             placeholder="City"
-            value={props.city}
+            value={personalInfo.city}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="city">
@@ -64,7 +65,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="state"
             placeholder="State"
-            value={props.state}
+            value={personalInfo.state}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="state">
@@ -77,7 +78,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="zipCode"
             placeholder="Zip Code"
-            value={props.zipCode}
+            value={personalInfo.zipCode}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="zipCode">
@@ -90,7 +91,7 @@ export default function PersonalInfo(props) {
             type="email"
             name="email"
             placeholder="example@mail.com"
-            value={props.email}
+            value={personalInfo.email}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="email">
@@ -103,7 +104,7 @@ export default function PersonalInfo(props) {
             type="tel"
             name="phone"
             placeholder="123-456-7890"
-            value={props.phone}
+            value={personalInfo.phone}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="phone">
@@ -116,7 +117,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="linkedIn"
             placeholder="LinkedIn"
-            value={props.linkedIn}
+            value={personalInfo.linkedIn}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="linkedIn">
@@ -129,7 +130,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="github"
             placeholder="GitHub"
-            value={props.github}
+            value={personalInfo.github}
             onChange={props.handleChange}
           />
           <label className="form_label" htmlFor="github">

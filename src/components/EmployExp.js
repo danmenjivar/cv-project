@@ -3,6 +3,7 @@ import "../styles/Form.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function EmployExp(props) {
+  const empInfo = props.empInfo;
   const formId = "empInfo#" + props.id;
   return (
     <div>
@@ -21,7 +22,7 @@ export default function EmployExp(props) {
             className="form_field"
             type="text"
             name="companyName"
-            value={props.companyName}
+            value={empInfo.companyName}
             onChange={props.handleChange}
             placeholder="Company Name"
           />
@@ -34,7 +35,7 @@ export default function EmployExp(props) {
             className="form_field"
             type="text"
             name="positionTitle"
-            value={props.positionTitle}
+            value={empInfo.positionTitle}
             onChange={props.handleChange}
             placeholder="Position Title"
           />
@@ -47,7 +48,7 @@ export default function EmployExp(props) {
             className="form_field"
             type="date"
             name="startDate"
-            value={props.startDate}
+            value={empInfo.startDate}
             onChange={props.handleChange}
             placeholder="From"
           />
@@ -60,7 +61,7 @@ export default function EmployExp(props) {
             className="form_field"
             type="date"
             name="endDate"
-            value={props.endDate}
+            value={empInfo.endDate}
             onChange={props.handleChange}
             placeholder="To"
           />
@@ -73,7 +74,7 @@ export default function EmployExp(props) {
             className="form_field"
             type="text"
             name="city"
-            value={props.city}
+            value={empInfo.city}
             onChange={props.handleChange}
             placeholder="City"
           />
@@ -86,7 +87,7 @@ export default function EmployExp(props) {
             className="form_field"
             type="text"
             name="state"
-            value={props.state}
+            value={empInfo.state}
             onChange={props.handleChange}
             placeholder="State"
           />
@@ -98,9 +99,9 @@ export default function EmployExp(props) {
           <textarea
             type="text"
             name="resp"
-            value={props.resp}
+            value={empInfo.resp}
             onChange={props.handleChange}
-            spellcheck="true"
+            spellCheck="true"
             placeholder="Main activities and responsibilities"
           />
           <label className="form_label" htmlFor="resp"></label>
