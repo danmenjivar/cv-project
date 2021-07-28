@@ -130,8 +130,11 @@ export default class CVPreview extends Component {
                 {exp.companyName.length > 0 ? exp.companyName : "COMPANY_NAME"}
               </div>
               <div className="row1-col2">
-                {exp.city.length > 0 ? exp.city : "CITY"},{" "}
-                {exp.state.length > 0 ? exp.state : "ST"}
+                {exp.isRemote
+                  ? "Remote"
+                  : (exp.city.length > 0 ? exp.city : "CITY") +
+                    ", " +
+                    (exp.state.length > 0 ? exp.state : "ST")}
               </div>
               <div className="row2-col1">
                 {exp.positionTitle.length > 0
@@ -139,7 +142,9 @@ export default class CVPreview extends Component {
                   : "POSITION_TITLE"}
               </div>
               <div className="row2-col2">
-                {dateFormatter(exp.startDate)}-{dateFormatter(exp.endDate)}
+                {dateFormatter(exp.startDate)}
+                {"\u2013"}
+                {exp.isCurrentPosition ? "Present" : dateFormatter(exp.endDate)}
               </div>
               <div className="row3">
                 {exp.resp.length > 0 ? exp.resp : "RESPONSIBILITIES"}

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Form.css";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Switch from "react-switch";
 
 export default function EmployExp(props) {
   const empInfo = props.empInfo;
@@ -56,45 +57,63 @@ export default function EmployExp(props) {
             Start Date
           </label>
         </div>
-        <div className="form_group">
-          <input
-            className="form_field"
-            type="date"
-            name="endDate"
-            value={empInfo.endDate}
-            onChange={props.handleChange}
-            placeholder="To"
-          />
-          <label className="form_label" htmlFor="endDate">
-            End Date
-          </label>
-        </div>
-        <div className="form_group">
-          <input
-            className="form_field"
-            type="text"
-            name="city"
-            value={empInfo.city}
-            onChange={props.handleChange}
-            placeholder="City"
-          />
-          <label className="form_label" htmlFor="city">
-            City
-          </label>
-        </div>
-        <div className="form_group">
-          <input
-            className="form_field"
-            type="text"
-            name="state"
-            value={empInfo.state}
-            onChange={props.handleChange}
-            placeholder="State"
-          />
-          <label className="form_label" htmlFor="state">
-            State
-          </label>
-        </div>
+        <Switch
+          checked={empInfo.isCurrentPosition}
+          onChange={() => props.switchHandler(props.id, "isCurrentPosition")}
+          uncheckedIcon={false}
+          checkedIcon={false}
+        />
+        {!empInfo.isCurrentPosition && (
+          <div className="form_group">
+            <input
+              className="form_field"
+              type="date"
+              name="endDate"
+              value={empInfo.endDate}
+              onChange={props.handleChange}
+              placeholder="To"
+            />
+            <label className="form_label" htmlFor="endDate">
+              End Date
+            </label>
+          </div>
+        )}
+        <Switch
+          checked={empInfo.isRemote}
+          onChange={() => props.switchHandler(props.id, "isRemote")}
+          uncheckedIcon={false}
+          checkedIcon={false}
+        />
+        {!empInfo.isRemote && (
+          <div className="form_group">
+            <input
+              className="form_field"
+              type="text"
+              name="city"
+              value={empInfo.city}
+              onChange={props.handleChange}
+              placeholder="City"
+            />
+            <label className="form_label" htmlFor="city">
+              City
+            </label>
+          </div>
+        )}
+        {!empInfo.isRemote && (
+          <div className="form_group">
+            <input
+              className="form_field"
+              type="text"
+              name="state"
+              value={empInfo.state}
+              onChange={props.handleChange}
+              placeholder="State"
+            />
+            <label className="form_label" htmlFor="state">
+              State
+            </label>
+          </div>
+        )}
         <div className="form_group">
           <textarea
             type="text"

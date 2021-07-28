@@ -19,6 +19,8 @@ export default function EmployInfo(props) {
         positionTitle: "",
         startDate: "",
         endDate: "",
+        isCurrentPosition: false,
+        isRemote: false,
         city: "",
         state: "",
         resp: "",
@@ -31,6 +33,14 @@ export default function EmployInfo(props) {
     setEmpChildren(empCopy);
   };
 
+  const onToggleHandler = (id, fieldName) => {
+    const empCopy = [...empChildren];
+    const indexOfElemChanged = empCopy.findIndex((elem) => elem.id === id);
+    const flag = empCopy[indexOfElemChanged][fieldName];
+    empCopy[indexOfElemChanged][fieldName] = !flag;
+    setEmpChildren(empCopy);
+  };
+
   return (
     <div>
       <h1>Employment</h1>
@@ -40,6 +50,7 @@ export default function EmployInfo(props) {
             id={child.id}
             key={child.key}
             deleteHandler={deleteHandler}
+            switchHandler={onToggleHandler}
             handleChange={props.handleChange}
             empInfo={child}
           />
