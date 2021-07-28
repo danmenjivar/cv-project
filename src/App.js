@@ -47,12 +47,12 @@ function App() {
     const [formName, formId] = e.target.form.id.split("#");
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
-    console.table({
-      formName,
-      formId,
-      fieldName,
-      fieldValue,
-    });
+    // console.table({
+    //   formName,
+    //   formId,
+    //   fieldName,
+    //   fieldValue,
+    // });
 
     switch (formName) {
       case "personalInfo":
@@ -166,7 +166,6 @@ function App() {
       setProjs(cvData.projs);
       setTools(cvData.tools);
       setLangs(cvData.langs);
-      console.log(personalInfo);
     } else {
       console.error("Invalid File Type");
     }
