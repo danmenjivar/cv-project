@@ -57,12 +57,18 @@ export default function EmployExp(props) {
             Start Date
           </label>
         </div>
-        <Switch
-          checked={empInfo.isCurrentPosition}
-          onChange={() => props.switchHandler(props.id, "isCurrentPosition")}
-          uncheckedIcon={false}
-          checkedIcon={false}
-        />
+        <div className="switch_form">
+          <div>
+            Is this your <em>Current</em> Position?
+          </div>
+          <Switch
+            checked={empInfo.isCurrentPosition}
+            onChange={() => props.switchHandler(props.id, "isCurrentPosition")}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            onColor="#11998e"
+          />
+        </div>
         {!empInfo.isCurrentPosition && (
           <div className="form_group">
             <input
@@ -78,12 +84,16 @@ export default function EmployExp(props) {
             </label>
           </div>
         )}
-        <Switch
-          checked={empInfo.isRemote}
-          onChange={() => props.switchHandler(props.id, "isRemote")}
-          uncheckedIcon={false}
-          checkedIcon={false}
-        />
+        <div className="switch_form">
+          <div>Is this position remote?</div>
+          <Switch
+            checked={empInfo.isRemote}
+            onChange={() => props.switchHandler(props.id, "isRemote")}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            onColor="#11998e"
+          />
+        </div>
         {!empInfo.isRemote && (
           <div className="form_group">
             <input
