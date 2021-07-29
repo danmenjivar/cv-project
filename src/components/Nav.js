@@ -51,6 +51,7 @@ export default function Nav(props) {
           className="icon-button"
           href="https://github.com/danmenjivar"
           target="_blank"
+          rel="noopener noreferrer"
           title="Checkout My GitHub"
         >
           <GitHubIcon />
