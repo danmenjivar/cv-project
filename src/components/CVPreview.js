@@ -12,15 +12,14 @@ export default class CVPreview extends Component {
     function dateFormatter(htmlDate) {
       const datePattern = /\d{4}-\d{2}-\d{2}/;
       if (!datePattern.test(htmlDate)) {
-        return "MXY, XX, XYYZ";
+        return "MXY, XYYZ";
       }
 
-      let [year, month, day] = htmlDate.split("-");
+      let [year, month] = htmlDate.split("-");
 
       // strip leading zeroes
       const zeroPattern = /^0/g;
       month = month.replaceAll(zeroPattern, "");
-      day = day.replaceAll(zeroPattern, "");
 
       const getMonth = (month) => {
         switch (month) {
@@ -52,7 +51,7 @@ export default class CVPreview extends Component {
             return "BAD_MONTH";
         }
       };
-      return `${getMonth(month)} ${day}, ${year}`;
+      return `${getMonth(month)}, ${year}`;
     }
 
     function isTechExp() {
@@ -105,19 +104,19 @@ export default class CVPreview extends Component {
         {edInfo.map((ed) => {
           return (
             <div className="grid" key={ed.key}>
-              <div className="row1-col1">
+              <div className="row1-col1" style={{ fontWeight: "bold" }}>
                 {ed.schoolName.length > 0 ? ed.schoolName : "SCHOOL_NAME"}
               </div>
-              <div className="row1-col2">
+              <div className="row2-col1">
                 {ed.city.length > 0 ? ed.city : "CITY"},{" "}
                 {ed.state.length > 0 ? ed.state : "ST"}
               </div>
-              <div className="row2-col1">
+              <div className="row1-col2">
                 {ed.degreeOfStudy.length > 0 ? ed.degreeOfStudy : "DEGREE_NAME"}
               </div>
               <div className="row2-col2">{dateFormatter(ed.gradDate)}</div>
-              <div className="row3">
-                {ed.relStudy.length > 0 ? ed.relStudy : "REL_STUDY"}
+              <div className="row3" style={{ whiteSpace: "pre-line" }}>
+                {ed.relStudy.length > 0 && ed.relStudy}
               </div>
             </div>
           );
@@ -126,28 +125,28 @@ export default class CVPreview extends Component {
         {expInfo.map((exp) => {
           return (
             <div className="grid" key={exp.key}>
-              <div className="row1-col1">
+              <div className="row1-col1" style={{ fontWeight: "bold" }}>
                 {exp.companyName.length > 0 ? exp.companyName : "COMPANY_NAME"}
               </div>
-              <div className="row1-col2">
+              <div className="row2-col1">
                 {exp.isRemote
                   ? "Remote"
                   : (exp.city.length > 0 ? exp.city : "CITY") +
                     ", " +
                     (exp.state.length > 0 ? exp.state : "ST")}
               </div>
-              <div className="row2-col1">
+              <div className="row1-col2">
                 {exp.positionTitle.length > 0
                   ? exp.positionTitle
                   : "POSITION_TITLE"}
               </div>
               <div className="row2-col2">
                 {dateFormatter(exp.startDate)}
-                {"\u2013"}
+                {" \u2013 "}
                 {exp.isCurrentPosition ? "Present" : dateFormatter(exp.endDate)}
               </div>
-              <div className="row3">
-                {exp.resp.length > 0 ? exp.resp : "RESPONSIBILITIES"}
+              <div className="row3" style={{ whiteSpace: "pre-line" }}>
+                {exp.resp.length > 0 && exp.resp}
               </div>
             </div>
           );
@@ -167,6 +166,9 @@ export default class CVPreview extends Component {
             </div>
           );
         })}
+        {(techInfo.langs.length > 0 || techInfo.tools.length > 0) && (
+          <h3>Skills &#38; Interests</h3>
+        )}
         <div className="justify-left">
           {techInfo.langs.length > 0 && (
             <span className="elemTitle">Languages: </span>
