@@ -104,7 +104,7 @@ export default class CVPreview extends Component {
         {edInfo.length > 0 && <h2>Education</h2>}
         {edInfo.map((ed) => {
           return (
-            <div className="grid">
+            <div className="grid" key={ed.key}>
               <div className="row1-col1">
                 {ed.schoolName.length > 0 ? ed.schoolName : "SCHOOL_NAME"}
               </div>
@@ -125,7 +125,7 @@ export default class CVPreview extends Component {
         {expInfo.length > 0 && <h2>Employment</h2>}
         {expInfo.map((exp) => {
           return (
-            <div className="grid">
+            <div className="grid" key={exp.key}>
               <div className="row1-col1">
                 {exp.companyName.length > 0 ? exp.companyName : "COMPANY_NAME"}
               </div>
@@ -156,7 +156,7 @@ export default class CVPreview extends Component {
         {techInfo.projs.length > 0 && <h3>Personal Projects</h3>}
         {techInfo.projs.map((proj) => {
           return (
-            <div className="justify-left">
+            <div className="justify-left" key={proj.key}>
               {" \u2022 "}
               <span className="elemTitle">
                 {proj.title.length > 0 ? proj.title : "PROJ_TITLE"}
@@ -173,7 +173,7 @@ export default class CVPreview extends Component {
           )}
           {techInfo.langs.map((lang, i) => {
             return (
-              <span>
+              <span key={lang.key}>
                 {lang.name.length > 0 ? lang.name : "LANG_NAME"}
                 {techInfo.langs.length === i + 1 ? "." : ", "}
               </span>
@@ -186,7 +186,7 @@ export default class CVPreview extends Component {
           )}
           {techInfo.tools.map((tech, i) => {
             return (
-              <span>
+              <span key={tech.key}>
                 {tech.name.length > 0 ? tech.name : "TECH_NAME"}
                 {techInfo.tools.length === i + 1 ? "." : ", "}
               </span>
