@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Nav from "./components/Nav";
 import PersonalInfo from "./components/PersonalInfo";
 import EdInfo from "./components/EdInfo";
@@ -171,6 +171,48 @@ function App() {
     }
   };
 
+  // Side Effect for Loading Stored Data
+  useEffect(() => {
+    const json = localStorage.getItem("cvData");
+    loadJSON(json);
+  }, []);
+
+  // Side Effect for Automatically Saving Data as Edited
+  useEffect(() => {
+    const cvObj = {
+      cv_version: "0.1",
+      personal: personalInfo,
+      ed: edInfo,
+      emp: empInfo,
+      projs: projs,
+      langs: langs,
+      tools: tools,
+    };
+
+    const json = JSON.stringify(cvObj);
+    localStorage.setItem("cvData", json);
+  }, [personalInfo, edInfo, empInfo, projs, langs, tools]);
+
+  const clearAllHandler = () => {
+    setPersonalInfo({
+      firstName: "",
+      lastName: "",
+      streetAddress: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      email: "",
+      phone: "",
+      linkedIn: "",
+      github: "",
+    });
+    setEdInfo([]);
+    setEmpInfo([]);
+    setProjs([]);
+    setTools([]);
+    setLangs([]);
+  };
+
   // JSX render
   return (
     <div className="App">
@@ -178,6 +220,7 @@ function App() {
         downloadHandler={downloadJSONHandler}
         printHandler={handlePrint}
         handleJSONUpload={loadJSONHandler}
+        clearHandler={clearAllHandler}
       />
       <div className="Form">
         <PersonalInfo handleChange={handleChange} personalInfo={personalInfo} />
