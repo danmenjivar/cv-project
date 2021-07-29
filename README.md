@@ -12,7 +12,7 @@ CV Maker is an easy way to write a professional looking resume.
 
 ## Installation
 
-- Project is hosted publicly here 👉[CV Maker](https://github.com/facebook/create-react-ap)
+- Project is hosted publicly here 👉[CV Maker](https://danmenjivar.github.io/cv-project/)
 - Can be run locally by cloning this repo, and running `npm install` and `npm start`
 
 ## Support
