@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/CVPreview.css";
 import { Linkedin, Github } from "@icons-pack/react-simple-icons";
-
+import LanguageIcon from "@material-ui/icons/Language";
 export default class CVPreview extends Component {
   render() {
     const personalInfo = this.props.personal;
@@ -73,13 +73,12 @@ export default class CVPreview extends Component {
             : "LAST_NAME"}
         </h1>
         <div className="socials">
-          <Linkedin />@
-          {personalInfo.linkedIn.length > 0
-            ? personalInfo.linkedIn
-            : "_USERNAME"}
-          {" \u2022 "}
-          <Github />@
-          {personalInfo.github.length > 0 ? personalInfo.github : "_USERNAME"}
+          {personalInfo.linkedIn.length > 0 && <Linkedin />}
+          {personalInfo.linkedIn.length > 0 && `@${personalInfo.linkedIn}`}
+          {personalInfo.github.length > 0 && " \u2022 "}
+          {personalInfo.github.length > 0 && <Github />}
+          {personalInfo.github.length > 0 && `@${personalInfo.github}`}
+          {personalInfo.website.length > 0 && ` \u2022 ${personalInfo.website}`}
         </div>
         <hr></hr>
         <div className="personal">
@@ -108,8 +107,11 @@ export default class CVPreview extends Component {
                 {ed.schoolName.length > 0 ? ed.schoolName : "SCHOOL_NAME"}
               </div>
               <div className="row2-col1">
-                {ed.city.length > 0 ? ed.city : "CITY"},{" "}
-                {ed.state.length > 0 ? ed.state : "ST"}
+                {ed.isRemote
+                  ? "Remote"
+                  : (ed.city.length > 0 ? ed.city : "CITY") +
+                    ", " +
+                    (ed.state.length > 0 ? ed.state : "ST")}
               </div>
               <div className="row1-col2">
                 {ed.degreeOfStudy.length > 0 ? ed.degreeOfStudy : "DEGREE_NAME"}

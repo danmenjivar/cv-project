@@ -21,12 +21,21 @@ export default function EdInfo(props) {
         city: "",
         state: "",
         relStudy: "",
+        isRemote: false,
       },
     ]);
   };
 
   const deleteHandler = (id) => {
     const edCopy = edChildren.filter((child) => child.id !== id);
+    setEdChildren(edCopy);
+  };
+
+  const switchHandler = (id, fieldName) => {
+    const edCopy = [...edChildren];
+    const indexOfElemChanged = edCopy.findIndex((elem) => elem.id === id);
+    const flag = edCopy[indexOfElemChanged][fieldName];
+    edCopy[indexOfElemChanged][fieldName] = !flag;
     setEdChildren(edCopy);
   };
 
@@ -41,6 +50,7 @@ export default function EdInfo(props) {
             deleteHandler={deleteHandler}
             handleChange={props.handleChange}
             edInfo={child}
+            switchHandler={switchHandler}
           />
         );
       })}

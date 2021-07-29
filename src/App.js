@@ -23,6 +23,7 @@ function App() {
     phone: "",
     linkedIn: "",
     github: "",
+    website: "",
   });
 
   const [edInfo, setEdInfo] = useState([]);
@@ -205,6 +206,7 @@ function App() {
       phone: "",
       linkedIn: "",
       github: "",
+      website: "",
     });
     setEdInfo([]);
     setEmpInfo([]);

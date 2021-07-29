@@ -137,6 +137,19 @@ export default function PersonalInfo(props) {
             GitHub
           </label>
         </div>
+        <div className="form_group">
+          <input
+            className="form_field"
+            type="text"
+            name="website"
+            placeholder="GitHub"
+            value={personalInfo.website}
+            onChange={props.handleChange}
+          />
+          <label className="form_label" htmlFor="website">
+            Personal Website
+          </label>
+        </div>
       </form>
     </div>
   );

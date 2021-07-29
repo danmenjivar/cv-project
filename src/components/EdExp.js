@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Form.css";
 import "../styles/Button.css";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Switch from "react-switch";
 
 export default function EdExp(props) {
   const edInfo = props.edInfo;
@@ -59,32 +60,46 @@ export default function EdExp(props) {
             Graduation Date
           </label>
         </div>
-        <div className="form_group">
-          <input
-            className="form_field"
-            type="text"
-            name="city"
-            value={edInfo.city}
-            onChange={props.handleChange}
-            placeholder="City"
+        <div className="switch_form">
+          <div>Is this school remote?</div>
+          <Switch
+            checked={edInfo.isRemote}
+            onChange={() => props.switchHandler(props.id, "isRemote")}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            onColor="#11998e"
           />
-          <label className="form_label" htmlFor="city">
-            City
-          </label>
         </div>
-        <div className="form_group">
-          <input
-            className="form_field"
-            type="text"
-            name="state"
-            value={edInfo.state}
-            onChange={props.handleChange}
-            placeholder="State"
-          />
-          <label className="form_label" htmlFor="state">
-            State
-          </label>
-        </div>
+        {!edInfo.isRemote && (
+          <div className="form_group">
+            <input
+              className="form_field"
+              type="text"
+              name="city"
+              value={edInfo.city}
+              onChange={props.handleChange}
+              placeholder="City"
+            />
+            <label className="form_label" htmlFor="city">
+              City
+            </label>
+          </div>
+        )}
+        {!edInfo.isRemote && (
+          <div className="form_group">
+            <input
+              className="form_field"
+              type="text"
+              name="state"
+              value={edInfo.state}
+              onChange={props.handleChange}
+              placeholder="State"
+            />
+            <label className="form_label" htmlFor="state">
+              State
+            </label>
+          </div>
+        )}
         <div className="form_group">
           <textarea
             type="text"
