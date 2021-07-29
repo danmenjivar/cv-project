@@ -45,6 +45,7 @@ h1 {
 
 .end {
   display: flex;
+  padding-right: 22px;
 }
 
 input[type="file"] {
