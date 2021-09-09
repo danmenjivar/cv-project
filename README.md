@@ -1,27 +1,21 @@
 # CV Maker
 
-![](./screenshot.png)
-CV Maker is an easy way to write a professional looking resume.
+### 👉[Live Demo](https://danmenjivar.github.io/cv-project/)
 
-## Features
+![screenshot](./screenshot.png)
 
+#### 📝 Description
+
+An easy way to write a professional looking resume.. A project from [the Odin Project Curriculum](https://www.theodinproject.com). 
+
+#### 💡 Features
 - Automatic formatting
 - Save CV as PDF
 - Export CV as JSON
 - Load previously exported CV data
 - Handles Personal Info, Education, Employment Experience, and Technical Experience
 
-## Installation
+#### 🛠️ Built with
+* React
 
-- Project is hosted publicly here 👉[CV Maker](https://danmenjivar.github.io/cv-project/)
-- Can be run locally by cloning this repo, and running `npm install` and `npm start`
 
-## Support
-
-If you are having issue, please open an issue ticket.
-
-## License
-
-This project is licensed under the [GNU GPLv3 license](LICENSE).
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
